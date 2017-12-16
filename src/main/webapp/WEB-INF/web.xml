@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>Servlet</servlet-name>
-        <servlet-class>Servlet</servlet-class>
+        <servlet-name>MeuServletinho</servlet-name>
+        <servlet-class>controle.MeuServletinho</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Servlet</servlet-name>
-        <url-pattern>/Servlet</url-pattern>
+        <servlet-name>MeuServletinho</servlet-name>
+        <url-pattern>/Contatos/Todos</url-pattern>
+        <url-pattern>/Contatos/Buscar</url-pattern>
+        <url-pattern>/Contatos/Inserir</url-pattern>
+        <url-pattern>/Contatos/Remover</url-pattern>
+        <url-pattern>/Contatos/Alterar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

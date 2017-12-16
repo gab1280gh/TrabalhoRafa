@@ -1,20 +1,18 @@
+<%-- 
+    Document   : alterarcontato
+    Created on : Mar 23, 2017, 8:13:27 PM
+    Author     : aluno
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
     </head>
     <body>
-        <form action="/ProjetoContatoSimples/Contatos/Todos">
-            <button type="submit">Botao</button>
-        </form>
-        <br>
-        <form method="post" action="/ProjetoContatoSimples/Contatos/Buscar">
-            Insira a id<input type="text" name="id"/> 
-            <button type="submit">Buscar Contatos</button>
-        </form>
-        <br>
-        <form method="post" action="/ProjetoContatoSimples/Contatos/Inserir" >
+        <form method="post" action="/ProjetoContatoSimples/Contatos/Alterar" >
             <fieldset>
             Inserir nome: <input type="text" name="nome"/> 
             <br>
@@ -28,7 +26,7 @@
             Inserir email:  <input type="text" name="mail"/> 
             <br>
             <br>
-            <button type="submit">Inserir</button>
+            <button type="submit">Alterar</button>
             </fieldset>
         </form>
     </body>
