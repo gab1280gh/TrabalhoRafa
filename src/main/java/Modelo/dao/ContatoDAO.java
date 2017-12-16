@@ -18,12 +18,13 @@ public class ContatoDAO {
     }
 
     public void gravar(Contato contato) throws SQLException {
-        String insercao = "INSERT INTO contato (nome, endereco, telefone, email) VALUES (?, ?, ?, ?);";
+        String insercao = "INSERT INTO contato (nome, endereco, telefone, email, fundos) VALUES (?, ?, ?, ?, ?);";
         try (PreparedStatement pstmt = conexao.prepareStatement(insercao, PreparedStatement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, contato.getNome());
             pstmt.setString(2, contato.getEndereco());
             pstmt.setString(3, contato.getTelefone());
             pstmt.setString(4, contato.getEmail());
+            pstmt.setInt (5, contato.getFundos());
             int resultado = pstmt.executeUpdate();
             if (resultado == 1) {
                 ResultSet rs = pstmt.getGeneratedKeys();
@@ -50,6 +51,7 @@ public class ContatoDAO {
                     contato.setEndereco(rs.getString(3));
                     contato.setTelefone(rs.getString(4));
                     contato.setEmail(rs.getString(5));
+                    contato.setFundos(rs.getInt(6));
                 }
             }
         }
@@ -69,6 +71,7 @@ public class ContatoDAO {
                     contato.setEndereco(rs.getString(3));
                     contato.setTelefone(rs.getString(4));
                     contato.setEmail(rs.getString(5));
+                    contato.setFundos(rs.getInt(6));
                     contatos.add(contato);
                 }
             }
@@ -90,6 +93,7 @@ public class ContatoDAO {
                     contato.setEndereco(rs.getString(3));
                     contato.setTelefone(rs.getString(4));
                     contato.setEmail(rs.getString(5));
+                    contato.setFundos(rs.getInt(6));
                     contatos.add(contato);
                 }
             }
@@ -117,6 +121,7 @@ public class ContatoDAO {
             pstmt.setString(2, contato.getEndereco());
             pstmt.setString(3, contato.getTelefone());
             pstmt.setString(4, contato.getEmail());
+            pstmt.setInt(5, contato.getFundos());
             pstmt.setLong(5, contato.getIdContato());
             int alteracoes = pstmt.executeUpdate();
             if (alteracoes == 1) {

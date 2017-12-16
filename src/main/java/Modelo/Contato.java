@@ -9,18 +9,30 @@ public class Contato {
     private String endereco;
     private String telefone;
     private String email;
-
+    private int fundos;
+    
     public Contato() {
     }
 
-    public Contato(long idContato, String nome, String endereco, String telefone, String email) {
+    public Contato(long idContato, String nome, String endereco, String telefone, String email, int fundos) {
         this.idContato = idContato;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
+        this.fundos = fundos;
     }
 
+    public int getFundos() {
+        return fundos;
+    }
+
+    public void setFundos(int fundos) {
+        this.fundos = fundos;
+    }
+
+    
+    
     public long getIdContato() {
         return idContato;
     }

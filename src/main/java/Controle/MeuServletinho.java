@@ -77,11 +77,13 @@ public class MeuServletinho extends HttpServlet {
                 String end = request.getParameter("end");
                 String tel = request.getParameter("tel");
                 String mail = request.getParameter("mail");
+                int fundos = Integer.parseInt(request.getParameter("fundos"));
                 Contato contatos = new Contato();
                 contatos.setNome(nome);
                 contatos.setEndereco(end);
                 contatos.setTelefone(tel);
                 contatos.setEmail(mail);
+                contatos.setFundos(fundos);
                 
                 dao.gravar(contatos);
                 String mensagem = "Contato Inserido com sucesso";
@@ -121,6 +123,7 @@ public class MeuServletinho extends HttpServlet {
                 String end = request.getParameter("end");
                 String tel = request.getParameter("tel");
                 String mail = request.getParameter("mail");
+                int fundos = Integer.parseInt(request.getParameter("mail"));
                
                 altera.setNome(nome);
                 altera.setEndereco(end);

@@ -14,7 +14,8 @@
             <p>${contato.nome}</p>
             <p>${contato.endereco}</p>
             <p>${contato.telefone}</p>
-            <p>${contato.email}</p><br>
+            <p>${contato.email}</p>
+            <p>${contato.fundos}</p><br>
             
         </c:forEach>
             

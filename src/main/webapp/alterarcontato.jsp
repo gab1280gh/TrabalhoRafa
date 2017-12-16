@@ -26,6 +26,9 @@
             Inserir email:  <input type="text" name="mail"/> 
             <br>
             <br>
+            Inserir Fundos:  <input type="number" name="fundos"/> 
+            <br>
+            <br>
             <button type="submit">Alterar</button>
             </fieldset>
         </form>
