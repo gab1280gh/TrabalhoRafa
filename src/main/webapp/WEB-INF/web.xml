@@ -2,11 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>MeuServletinho</servlet-name>
-        <servlet-class>controle.MeuServletinho</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Financeiro</servlet-name>
-        <servlet-class>Controle.Financeiro</servlet-class>
+        <servlet-class>Controle.MeuServletinho</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MeuServletinho</servlet-name>
@@ -16,6 +12,10 @@
         <url-pattern>/Contatos/Remover</url-pattern>
         <url-pattern>/Contatos/Alterar</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Financeiro</servlet-name>
+        <servlet-class>Controle.Financeiro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Financeiro</servlet-name>
         <url-pattern>/Financeiro</url-pattern>
