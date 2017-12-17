@@ -24,7 +24,7 @@ public class ContatoDAO {
             pstmt.setString(2, contato.getEndereco());
             pstmt.setString(3, contato.getTelefone());
             pstmt.setString(4, contato.getEmail());
-            pstmt.setInt (5, contato.getFundos());
+            pstmt.setDouble (5, contato.getFundos());
             int resultado = pstmt.executeUpdate();
             if (resultado == 1) {
                 ResultSet rs = pstmt.getGeneratedKeys();
@@ -121,7 +121,7 @@ public class ContatoDAO {
             pstmt.setString(2, contato.getEndereco());
             pstmt.setString(3, contato.getTelefone());
             pstmt.setString(4, contato.getEmail());
-            pstmt.setInt(5, contato.getFundos());
+            pstmt.setDouble(5, contato.getFundos());
             pstmt.setLong(5, contato.getIdContato());
             int alteracoes = pstmt.executeUpdate();
             if (alteracoes == 1) {

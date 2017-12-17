@@ -77,7 +77,7 @@ public class MeuServletinho extends HttpServlet {
                 String end = request.getParameter("end");
                 String tel = request.getParameter("tel");
                 String mail = request.getParameter("mail");
-                int fundos = Integer.parseInt(request.getParameter("fundos"));
+                double fundos = Double.parseDouble(request.getParameter("fundos"));
                 Contato contatos = new Contato();
                 contatos.setNome(nome);
                 contatos.setEndereco(end);

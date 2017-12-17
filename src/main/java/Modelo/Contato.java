@@ -9,12 +9,12 @@ public class Contato {
     private String endereco;
     private String telefone;
     private String email;
-    private int fundos;
+    private double fundos;
     
     public Contato() {
     }
 
-    public Contato(long idContato, String nome, String endereco, String telefone, String email, int fundos) {
+    public Contato(long idContato, String nome, String endereco, String telefone, String email, double fundos) {
         this.idContato = idContato;
         this.nome = nome;
         this.endereco = endereco;
@@ -23,11 +23,11 @@ public class Contato {
         this.fundos = fundos;
     }
 
-    public int getFundos() {
+    public double getFundos() {
         return fundos;
     }
 
-    public void setFundos(int fundos) {
+    public void setFundos(double fundos) {
         this.fundos = fundos;
     }
 

@@ -4,6 +4,10 @@
         <servlet-name>MeuServletinho</servlet-name>
         <servlet-class>controle.MeuServletinho</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Financeiro</servlet-name>
+        <servlet-class>Controle.Financeiro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MeuServletinho</servlet-name>
         <url-pattern>/Contatos/Todos</url-pattern>
@@ -11,6 +15,10 @@
         <url-pattern>/Contatos/Inserir</url-pattern>
         <url-pattern>/Contatos/Remover</url-pattern>
         <url-pattern>/Contatos/Alterar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Financeiro</servlet-name>
+        <url-pattern>/Financeiro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
