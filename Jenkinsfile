@@ -24,7 +24,7 @@ touch $JENKINS_HOME/Dockerfiles/Mariadb/start.sh
         }
         stage('Docker root') {
           steps {
-            sh '''cd $WORKSPACE/target/tech.nerddash
+            sh '''cd $WORKSPACE/target/tech.ProjetoContatoSimples-1.0-SNAPSHOT
 rm -rf $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/*
 mv * $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/'''
           }
@@ -75,11 +75,15 @@ docker build -t $USERNAME/$DATABASE_NAME  .
     APPLICATION_NAME = 'trabalhorafs'
   }
   post {
-   failure {
-     mail(to: 'victor.73.komori@gmail.com', subject: "Failed Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL}.")
-   }  
-   success {
-     mail(to: 'victor.73.komori@gmail.com', subject: "Successed Pipeline: ${currentBuild.fullDisplayName}", body: "${env.BUILD_URL} was successefully build.")
-   }
-}
+    failure {
+      mail(to: 'victor.73.komori@gmail.com', subject: "Failed Pipeline: ${currentBuild.fullDisplayName}", body: "Something is wrong with ${env.BUILD_URL}.")
+      
+    }
+    
+    success {
+      mail(to: 'victor.73.komori@gmail.com', subject: "Successed Pipeline: ${currentBuild.fullDisplayName}", body: "${env.BUILD_URL} was successefully build.")
+      
+    }
+    
+  }
 }
