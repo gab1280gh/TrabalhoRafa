@@ -10,11 +10,18 @@
         <h1>Busca Contato</h1>
         
             <form action="/ProjetoContatoSimples/Contatos/Remover">
-            <p>${contatos.idContato}</p>
-            <p>${contatos.nome}</p>
-            <p>${contatos.endereco}</p>
-            <p>${contatos.telefone}</p>
-            <p>${contatos.email}</p><br>
+                <p>${contatos.idContato}<br>
+                   ${contatos.nome}<br>
+                   ${contatos.endereco}<br>
+                   ${contatos.telefone}<br>
+                   ${contatos.email}</p><br>
+            
+            <p>Fundos bruto: ${contatos.fundos} <br>
+               Líquido: ${liquido} <br>
+               Taxas (15%): ${taxas} <br>
+               Abate de contas ($240): ${contas} <br>
+            </p>
+            
             <button type="submit">Remover</button>
             </form>
             <form action="/ProjetoContatoSimples/alterarcontato.jsp">

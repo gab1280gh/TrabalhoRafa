@@ -29,7 +29,13 @@ public class Financeiro extends HttpServlet {
                 long id = Long.parseLong(request.getParameter("id"));
                 Contato contatos = dao.buscar(id);
                 fabrica.fecharConexao();
+                double fundos = contatos.getFundos();
+                double liquido = Liquido(fundos);
+                System.out.println("PUTA QUE PARIU VEI " + liquido);
                 request.setAttribute("contatos", contatos);
+                request.setAttribute("liquido", liquido);
+                request.setAttribute("taxas", Taxas(fundos));
+                request.setAttribute("contas", Contas(fundos));
                 rd.forward(request, response);
             } catch (SQLException ex) {
                 DAOFactory.mostrarSQLException(ex);
@@ -37,6 +43,23 @@ public class Financeiro extends HttpServlet {
         }
     }
 
+    private double Liquido(double fundos) {
+        double lqd = fundos - Taxas(fundos);
+        return lqd;
+        
+    }
+    
+    private double Taxas(double fundos) {
+        double taxas = fundos * 15/100;
+        return taxas;   
+    }
+    
+    private double Contas (double fundos){
+        double contas = 240;
+        double abate = Liquido(fundos) - contas;
+        return abate;
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -83,5 +106,9 @@ public class Financeiro extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
+
+    
 
 }

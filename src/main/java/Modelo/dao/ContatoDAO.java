@@ -40,7 +40,7 @@ public class ContatoDAO {
 
     public Contato buscar(long idContato) throws SQLException {
         Contato contato = null;
-        String selecao = "SELECT * FROM contato WHERE idContato = ?";
+        String selecao = "SELECT * FROM contato WHERE idContatos = ?";
         try (PreparedStatement pstmt = conexao.prepareStatement(selecao)) {
             pstmt.setLong(1, idContato);
             try (ResultSet rs = pstmt.executeQuery()) {
