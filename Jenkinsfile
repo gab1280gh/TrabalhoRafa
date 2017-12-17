@@ -16,7 +16,7 @@ pipeline {
     stage('Dockerhub') {
       steps {
         sh 'mvn clean install'
-        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+        sh 'docker login -u $USERNAME -p $PASSWORD'
       }
     }
     stage('Mariadb denp') {
@@ -33,7 +33,7 @@ touch $JENKINS_HOME/Dockerfiles/Mariadb/start.sh
           steps {
             sh 'mvn clean install'
             sh '''cd $JENKINS_HOME/Dockerfiles/Tomcat
-docker build -t $DOCKERHUB_USERNAME/$APPLICATION_NAME  .
+docker build -t $USERNAME/$APPLICATION_NAME  .
 '''
           }
         }
@@ -41,7 +41,7 @@ docker build -t $DOCKERHUB_USERNAME/$APPLICATION_NAME  .
           steps {
             sh 'mvn clean install'
             sh '''cd $JENKINS_HOME/Dockerfiles/Mariadb
-docker build -t $DOCKERHUB_USERNAME/$DATABASE_NAME  .
+docker build -t $USERNAME/$DATABASE_NAME  .
 '''
           }
         }
@@ -52,21 +52,21 @@ docker build -t $DOCKERHUB_USERNAME/$DATABASE_NAME  .
         stage('Upload image application') {
           steps {
             sh 'mvn clean install'
-            sh 'docker push $DOCKERHUB_USERNAME/$APPLICATION_NAME'
+            sh 'docker push $USERNAME/$APPLICATION_NAME'
           }
         }
         stage('Upload image mariadb') {
           steps {
             sh 'mvn clean install'
-            sh 'docker push $DOCKERHUB_USERNAME/$DATABASE_NAME'
+            sh 'docker push $USERNAME/$DATABASE_NAME'
           }
         }
       }
     }
   }
   environment {
-    DOCKERHUB_USERNAME = 'vitimfk7'
-    DOCKERHUB_PASSWORD = 'pk79c1'
+    USERNAME = 'vitimfk7'
+    PASSWORD = 'pk79c1'
     DATABASE_NAME = 'mariadb'
     APPLICATION_NAME = 'course-suggestion'
   }
