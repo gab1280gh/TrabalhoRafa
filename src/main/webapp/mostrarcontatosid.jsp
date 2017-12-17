@@ -9,7 +9,7 @@
     <body>
         <h1>Busca Contato</h1>
         
-             <form action="/ProjetoContatoSimples/Contatos/Remover">
+            <form action="/ProjetoContatoSimples/Contatos/Remover">
             <p>${contatos.idContato}</p>
             <p>${contatos.nome}</p>
             <p>${contatos.endereco}</p>

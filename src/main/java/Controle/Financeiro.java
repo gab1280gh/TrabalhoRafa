@@ -1,46 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controle;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Contato;
+import modelo.dao.ContatoDAO;
+import modelo.dao.DAOFactory;
 
-/**
- *
- * @author Moon_
- */
 public class Financeiro extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Financeiro</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Financeiro at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        response.setCharacterEncoding("UTF-8");
+        String caminho = request.getServletPath();        
+        if (caminho.equalsIgnoreCase("/Financeiro/Orcamento")){
+            try {
+                DAOFactory fabrica = new DAOFactory();
+                fabrica.abrirConexao();
+                ContatoDAO dao = fabrica.criarContatoDAO();
+                RequestDispatcher rd = request.getRequestDispatcher("/mostrarcontatosid.jsp");
+                long id = Long.parseLong(request.getParameter("id"));
+                Contato contatos = dao.buscar(id);
+                fabrica.fecharConexao();
+                request.setAttribute("contatos", contatos);
+                rd.forward(request, response);
+            } catch (SQLException ex) {
+                DAOFactory.mostrarSQLException(ex);
+            }
         }
     }
 
@@ -56,7 +49,11 @@ public class Financeiro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Financeiro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -70,7 +67,11 @@ public class Financeiro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Financeiro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

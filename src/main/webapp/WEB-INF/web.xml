@@ -18,7 +18,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Financeiro</servlet-name>
-        <url-pattern>/Financeiro</url-pattern>
+        <url-pattern>/Financeiro/Orcamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
