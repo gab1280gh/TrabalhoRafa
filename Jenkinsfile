@@ -15,8 +15,8 @@ pipeline {
     }
     stage('Dockerhub') {
       steps {
-        sh 'mvn clean install'
         sh 'docker login -u $USERNAME -p $PASSWORD'
+        sh 'mvn clean install'
       }
     }
     stage('Mariadb denp') {
