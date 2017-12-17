@@ -65,9 +65,9 @@ docker build -t $DOCKERHUB_USERNAME/$DATABASE_NAME  .
     }
   }
   environment {
-    DOCKERHUB_USERNAME = '\'vitimfk7\''
-    DOCKERHUB_PASSWORD = '\'pk79c1\''
-    DATABASE_NAME = '\'mariadb\''
-    APPLICATION_NAME = '\'course-suggestion\''
+    DOCKERHUB_USERNAME = 'vitimfk7'
+    DOCKERHUB_PASSWORD = 'pk79c1'
+    DATABASE_NAME = 'mariadb'
+    APPLICATION_NAME = 'course-suggestion'
   }
 }
