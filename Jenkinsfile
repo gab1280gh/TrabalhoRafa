@@ -27,9 +27,9 @@ touch $JENKINS_HOME/Dockerfiles/Mariadb/start.sh
 '''
       }
     }
-    stage('Imagem aplicação') {
+    stage('Imagem aplicaÃ§Ã£o') {
       parallel {
-        stage('Imagem aplicação') {
+        stage('Imagem aplicaÃ§Ã£o') {
           steps {
             sh 'mvn clean install'
             sh '''cd $JENKINS_HOME/Dockerfiles/Tomcat
@@ -65,9 +65,9 @@ docker build -t $DOCKERHUB_USERNAME/$DATABASE_NAME  .
     }
   }
   environment {
-    DOCKERHUB_USERNAME = 'vitimfk7'
-    DOCKERHUB_PASSWORD = 'pk79c1'
-    DATABASE_NAME = 'mariadb'
-    APPLICATION_NAME = 'course-suggestion'
+    DOCKERHUB_USERNAME = '\'vitimfk7\''
+    DOCKERHUB_PASSWORD = '\'pk79c1\''
+    DATABASE_NAME = '\'mariadb\''
+    APPLICATION_NAME = '\'course-suggestion\''
   }
 }
