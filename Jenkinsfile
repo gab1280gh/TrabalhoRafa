@@ -13,11 +13,22 @@ pipeline {
       }
     }
     stage('Mariadb denp') {
-      steps {
-        sh 'mvn clean install'
-        sh '''touch $JENKINS_HOME/Dockerfiles/Mariadb/my.cnf
+      parallel {
+        stage('Mariadb denp') {
+          steps {
+            sh 'mvn clean install'
+            sh '''touch $JENKINS_HOME/Dockerfiles/Mariadb/my.cnf
 touch $JENKINS_HOME/Dockerfiles/Mariadb/start.sh
 '''
+          }
+        }
+        stage('Docker root') {
+          steps {
+            sh '''cd $WORKSPACE/target/tech.nerddash
+rm -rf $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/*
+mv * $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/'''
+          }
+        }
       }
     }
     stage('Imagem aplicação') {
