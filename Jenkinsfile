@@ -61,6 +61,6 @@ docker build -t $USERNAME/$DATABASE_NAME  .
     USERNAME = 'vitimfk7'
     PASSWORD = 'pk79c1'
     DATABASE_NAME = 'mariadb'
-    APPLICATION_NAME = 'course-suggestion'
+    APPLICATION_NAME = 'TrabalhoRafs'
   }
 }
