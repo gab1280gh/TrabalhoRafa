@@ -31,16 +31,34 @@ public class Financeiro extends HttpServlet {
                 fabrica.fecharConexao();
                 double fundos = contatos.getFundos();
                 double liquido = Liquido(fundos);
-                System.out.println("PUTA QUE PARIU VEI " + liquido);
+                boolean posNeg = posNeg(fundos);
+                String balanco;
+                if (posNeg == true){
+                    balanco = "Balanço positivo";
+                }else{
+                    balanco = "Balanço negativo";
+                }
                 request.setAttribute("contatos", contatos);
                 request.setAttribute("liquido", liquido);
                 request.setAttribute("taxas", Taxas(fundos));
                 request.setAttribute("contas", Contas(fundos));
+                request.setAttribute("balanco", balanco);
                 rd.forward(request, response);
             } catch (SQLException ex) {
                 DAOFactory.mostrarSQLException(ex);
             }
         }
+    }
+    
+    private boolean posNeg (double fundos){
+        double valor = Contas(fundos);
+        boolean balanco;
+        if (valor >= 0){
+            balanco = false;
+        }else{ 
+            balanco = true;
+        }
+        return balanco;
     }
 
     private double Liquido(double fundos) {

@@ -20,6 +20,8 @@
                Líquido: ${liquido} <br>
                Taxas (15%): ${taxas} <br>
                Abate de contas ($240): ${contas} <br>
+               <br>
+               ${balanco}
             </p>
             
             <button type="submit">Remover</button>
