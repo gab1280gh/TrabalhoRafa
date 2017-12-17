@@ -24,7 +24,7 @@ touch $JENKINS_HOME/Dockerfiles/Mariadb/start.sh
         }
         stage('Docker root') {
           steps {
-            sh '''cd $WORKSPACE/target/tech.ProjetoContatoSimples-1.0-SNAPSHOT
+            sh '''cd $WORKSPACE/target/ProjetoContatoSimples-1.0-SNAPSHOT
 rm -rf $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/*
 mv * $JENKINS_HOME/Dockerfiles/Tomcat/ROOT/'''
           }
