@@ -65,9 +65,9 @@ public class ContatoDAOTest {
    //                         OperacoesComunsBD.RESET_AUTOINCREMENT_H2,
    //                           OperacoesComunsBD.INSERE_DADOS_BASICOS);
    // MySQL
-   //     DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
-   //             "jdbc:mysql://localhost:3306/contatossimples",
-   //             "root", "12345"), operation);
+        DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
+                "jdbc:mysql://localhost:3306/mydb",
+                "root", "12345"), operation);
 
 //        //H2 em arquivo
 //        ConexaoFactory.getConexaoH2Arquivo();  // para criar o BD caso ele nao exista
@@ -76,13 +76,13 @@ public class ContatoDAOTest {
 //                "root", "12345"), operation);
         
 //        //H2 em memoria
-           DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
-                "jdbc:h2:mem:gerenciadorlivros;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1;"
-                + "INIT=CREATE TABLE IF NOT EXISTS contato (idContato int(11) "
-                + "PRIMARY KEY AUTO_INCREMENT, Nome varchar(255), "
-                + "Endereco varchar(255), Telefone varchar(45), Email "
-                + "varchar(255), Fundos decimal(10,0))\\;",
-                         "root", "12345"), operation);
+//           DbSetup dbSetup = new DbSetup(new DriverManagerDestination(
+//                "jdbc:mysql://localhost:3306/mydb;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1;"
+//                + "INIT=CREATE TABLE IF NOT EXISTS contato (idContatos int(11) "
+//                + "PRIMARY KEY AUTO_INCREMENT, Nome varchar(255), "
+//                + "Endereco varchar(255), Telefone varchar(45), Email "
+//                + "varchar(255), Fundos decimal(10,0))\\;",
+//                         "root", "12345"), operation);
         
         dbSetupTracker.launchIfNecessary(dbSetup);
 
@@ -102,7 +102,6 @@ public class ContatoDAOTest {
     @Test
     public void testGravar() throws Exception {
         Contato teste = mock(Contato.class);
-        //factory.abrirConexaoMemoria();
         teste.setIdContato(1);
         teste.setNome("teste");
         teste.setEndereco("teste");
@@ -120,36 +119,29 @@ public class ContatoDAOTest {
      */
     @Test
     public void testBuscar() throws Exception {
-        Contato teste = new Contato();
-        teste.setIdContato(1);
-        teste.setNome("teste");
-        teste.setEndereco("teste");
-        teste.setEmail("teste");
-        teste.setTelefone("123teste");
-        teste.setFundos(200);
-        dao.gravar(teste);
-        Contato result = dao.buscar(1);
+        Contato resultBuscar = dao.buscar(2);
         
-        assertTrue(result.getNome().equals("teste"));
+        assertTrue(resultBuscar.getNome().equals("1"));
+        assertTrue(String.valueOf(resultBuscar.getIdContato()).equals("2"));
       
 
     }
 
-    /**
-     * Test of buscarTodos method, of class ContatoDAO.
-     */
-    @Test
-    public void testBuscarTodos() throws Exception {
-        
-    }
-
-    /**
-     * Test of remover method, of class ContatoDAO.
-     */
-    @Test
-    public void testRemover() throws Exception {
-        
-    }
+//    /**
+//     * Test of buscarTodos method, of class ContatoDAO.
+//     */
+//    @Test
+//    public void testBuscarTodos() throws Exception {
+//        
+//    }
+//
+//    /**
+//     * Test of remover method, of class ContatoDAO.
+//     */
+//    @Test
+//    public void testRemover() throws Exception {
+//        
+//    }
 
     /**
      * Test of atualizar method, of class ContatoDAO.
@@ -157,7 +149,6 @@ public class ContatoDAOTest {
     @Test
     public void testAtualizar() throws Exception {
         Contato teste = mock(Contato.class);
-        //factory.abrirConexaoMemoria();
         teste.setIdContato(1);
         teste.setNome("teste");
         teste.setEndereco("teste");
@@ -172,8 +163,6 @@ public class ContatoDAOTest {
         dao.atualizar(update);
         Contato result = dao.buscar(1);
         assertTrue(result.getNome().equals("novoteste"));
-        //factory.fecharConexao();
-
     }
     
 }

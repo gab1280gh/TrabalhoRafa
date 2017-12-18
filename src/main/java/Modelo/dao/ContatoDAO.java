@@ -102,7 +102,7 @@ public class ContatoDAO {
     }
 
     public void remover(Contato contato) throws SQLException {
-        String remocao = "DELETE FROM contato WHERE idContato = ?";
+        String remocao = "DELETE FROM contato WHERE idContatos = ?";
         try (PreparedStatement pstmt = conexao.prepareStatement(remocao)) {
             pstmt.setLong(1, contato.getIdContato());
             int remocoes = pstmt.executeUpdate();
@@ -115,7 +115,7 @@ public class ContatoDAO {
     }
 
     public void atualizar(Contato contato) throws SQLException {
-        String alteracao = "UPDATE contato SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE idContato = ?;";
+        String alteracao = "UPDATE contato SET nome = ?, endereco = ?, telefone = ?, email = ? WHERE idContatos = ?;";
         try (PreparedStatement pstmt = conexao.prepareStatement(alteracao)) {
             pstmt.setString(1, contato.getNome());
             pstmt.setString(2, contato.getEndereco());
