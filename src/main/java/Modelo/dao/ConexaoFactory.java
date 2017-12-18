@@ -9,11 +9,11 @@ public class ConexaoFactory {
     public static Connection getConexao() throws SQLException {
         String caminho = "jdbc:mysql";
 //        String caminho = "jdbc:postgresql";
-        String host = "mariadb";
+        String host = "localhost";
         String porta = "3306";
 //        String porta = "5432";
         String bd = "mydb";
-        String login = "mariadb";
+        String login = "root";
 //        String login = "postgres";
         String senha = "12345";
         String url = caminho + "://" + host + ":" + porta + "/" + bd;
