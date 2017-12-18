@@ -50,29 +50,29 @@ public class Financeiro extends HttpServlet {
         }
     }
     
-    private boolean posNeg (double fundos){
+    public boolean posNeg (double fundos){
         double valor = Contas(fundos);
         boolean balanco;
-        if (valor >= 0){
-            balanco = false;
-        }else{ 
+        if (valor > 0){
             balanco = true;
+        }else{ 
+            balanco = false;
         }
         return balanco;
     }
 
-    private double Liquido(double fundos) {
+    public double Liquido(double fundos) {
         double lqd = fundos - Taxas(fundos);
         return lqd;
         
     }
     
-    private double Taxas(double fundos) {
-        double taxas = fundos * 15/100;
+    public double Taxas(double fundos) {
+        double taxas = fundos * 15/100 ;
         return taxas;   
     }
     
-    private double Contas (double fundos){
+    public double Contas (double fundos){
         double contas = 240;
         double abate = Liquido(fundos) - contas;
         return abate;
