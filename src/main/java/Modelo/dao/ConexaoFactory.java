@@ -13,7 +13,7 @@ public class ConexaoFactory {
         String porta = "3306";
 //        String porta = "5432";
         String bd = "mydb";
-        String login = "root";
+        String login = "mariadb";
 //        String login = "postgres";
         String senha = "12345";
         String url = caminho + "://" + host + ":" + porta + "/" + bd;
