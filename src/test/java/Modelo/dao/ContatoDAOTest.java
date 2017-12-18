@@ -103,6 +103,7 @@ public class ContatoDAOTest {
     public void testGravar() throws Exception {
         Contato teste = mock(Contato.class);
         //factory.abrirConexaoMemoria();
+        teste.setIdContato(1);
         teste.setNome("teste");
         teste.setEndereco("teste");
         teste.setEmail("teste");
@@ -119,7 +120,19 @@ public class ContatoDAOTest {
      */
     @Test
     public void testBuscar() throws Exception {
+        Contato teste = new Contato();
+        teste.setIdContato(1);
+        teste.setNome("teste");
+        teste.setEndereco("teste");
+        teste.setEmail("teste");
+        teste.setTelefone("123teste");
+        teste.setFundos(200);
+        dao.gravar(teste);
+        Contato result = dao.buscar(1);
         
+        assertTrue(result.getNome().equals("teste"));
+      
+
     }
 
     /**
@@ -127,14 +140,6 @@ public class ContatoDAOTest {
      */
     @Test
     public void testBuscarTodos() throws Exception {
-        
-    }
-
-    /**
-     * Test of buscarNome method, of class ContatoDAO.
-     */
-    @Test
-    public void testBuscarNome() throws Exception {
         
     }
 
@@ -151,7 +156,24 @@ public class ContatoDAOTest {
      */
     @Test
     public void testAtualizar() throws Exception {
-        
+        Contato teste = mock(Contato.class);
+        //factory.abrirConexaoMemoria();
+        teste.setIdContato(1);
+        teste.setNome("teste");
+        teste.setEndereco("teste");
+        teste.setEmail("teste");
+        teste.setTelefone("123teste");
+        teste.setFundos(200);
+        dao.gravar(teste);
+        List<Contato> list = new ArrayList<>();
+        list = dao.buscarTodos();
+        Contato update = list.get(0);
+        update.setNome("novoteste");
+        dao.atualizar(update);
+        Contato result = dao.buscar(1);
+        assertTrue(result.getNome().equals("novoteste"));
+        //factory.fecharConexao();
+
     }
     
 }
